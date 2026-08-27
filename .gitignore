@@ -441,3 +441,4 @@ crash.*.log
 /frontend/package-lock.json
 /backend/.venv
 /frontend/.env.example
+RUN.md
