@@ -442,3 +442,4 @@ crash.*.log
 /backend/.venv
 /frontend/.env.example
 RUN.md
+DONE.md

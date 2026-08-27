@@ -1,0 +1,94 @@
+{
+  "experiment_name": "overall_system_experiment",
+  "run_id": "b00bc246",
+  "status": "COMPLETED",
+  "started_at": null,
+  "completed_at": null,
+  "git_commit": "7a2f8c88d299bcae64e6f819ced35b4401e71e07",
+  "python_version": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "package_versions": {
+    "fastapi": "0.141.1",
+    "sqlalchemy": "2.0.52",
+    "pydantic": "2.13.4",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.0",
+    "torch": "2.13.0",
+    "librosa": "0.11.0",
+    "web3": "7.16.0"
+  },
+  "environment_info": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "cpu_count": 12
+  },
+  "config": {},
+  "dataset_name": null,
+  "dataset_path": null,
+  "error_message": null,
+  "notes": "Overall system evaluation: 8/14 experiments completed. Academic integrity: all NOT_RUN clearly documented.",
+  "metrics": [
+    {
+      "name": "experiments_completed",
+      "value": 8.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "Out of 14 total experiments"
+    },
+    {
+      "name": "experiments_not_run",
+      "value": 6.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "Require real data/hardware"
+    },
+    {
+      "name": "experiments_failed",
+      "value": 0.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "actual_metrics_collected",
+      "value": 40.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "simulated_metrics_collected",
+      "value": 7.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "not_run_metrics",
+      "value": 7.0,
+      "unit": "count",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "experiment_completion_rate",
+      "value": 57.14285714285714,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    }
+  ]
+}

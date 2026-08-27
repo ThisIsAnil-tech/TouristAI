@@ -1,0 +1,7 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+accuracy,100.0,%,ACTUAL,,,
+tpr,100.0,%,ACTUAL,,,
+fpr,0.0,%,ACTUAL,,,
+precision,100.0,%,ACTUAL,,,
+mean_decision_latency_ms,0.008450006134808064,ms,ACTUAL,,,
+n_test_cases,10.0,cases,ACTUAL,,,

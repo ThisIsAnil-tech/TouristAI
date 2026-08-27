@@ -1,0 +1,3 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+registration_latency_ms,,ms,NOT_RUN,,,Blockchain node not configured (BLOCKCHAIN_PROVIDER_URL + BLOCKCHAIN_PRIVATE_KEY). Start: docker compose up blockchain && python scripts/deploy_contract.py
+gas_used,,gas,NOT_RUN,,,Blockchain node not configured (BLOCKCHAIN_PROVIDER_URL + BLOCKCHAIN_PRIVATE_KEY). Start: docker compose up blockchain && python scripts/deploy_contract.py

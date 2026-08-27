@@ -1,0 +1,8 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+accuracy,33.33333333333333,%,ACTUAL,MobileNetV2,,n_samples=30
+inference_time_mean_ms,13.628636669212332,ms,ACTUAL,MobileNetV2,,
+inference_time_std_ms,1.7963128359196325,ms,ACTUAL,MobileNetV2,,
+model_size_mb,8.72761058807373,MB,ACTUAL,MobileNetV2,,
+macro_f1,16.666666666666664,%,ACTUAL,MobileNetV2,,
+macro_precision,11.11111111111111,%,ACTUAL,MobileNetV2,,
+macro_recall,33.33333333333333,%,ACTUAL,MobileNetV2,,

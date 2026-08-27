@@ -8,7 +8,31 @@ from __future__ import annotations
 
 import torch
 import torch.nn as nn
-import torchvision.models as tv_models
+class InvertedResidual(nn.Module):
+    def __init__(self, inp: int, oup: int, stride: int, expand_ratio: int) -> None:
+        super().__init__()
+        self.stride = stride
+        hidden_dim = int(round(inp * expand_ratio))
+        self.use_res_connect = self.stride == 1 and inp == oup
+
+        layers = []
+        if expand_ratio != 1:
+            layers.append(nn.Conv2d(inp, hidden_dim, 1, 1, 0, bias=False))
+            layers.append(nn.BatchNorm2d(hidden_dim))
+            layers.append(nn.ReLU6(inplace=True))
+        layers.extend([
+            nn.Conv2d(hidden_dim, hidden_dim, 3, stride, 1, groups=hidden_dim, bias=False),
+            nn.BatchNorm2d(hidden_dim),
+            nn.ReLU6(inplace=True),
+            nn.Conv2d(hidden_dim, oup, 1, 1, 0, bias=False),
+            nn.BatchNorm2d(oup),
+        ])
+        self.conv = nn.Sequential(*layers)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        if self.use_res_connect:
+            return x + self.conv(x)
+        return self.conv(x)
 
 
 class MobileNetV2Classifier(nn.Module):
@@ -17,50 +41,61 @@ class MobileNetV2Classifier(nn.Module):
 
     Input:  [batch, 1, n_mels, time_frames]  (greyscale mel-spectrogram)
     Output: [batch, num_classes]              (logits)
-
-    Architecture based on MobileNetV2 pretrained on ImageNet,
-    adapted for single-channel audio spectrograms.
     """
 
     def __init__(self, num_classes: int = 3, pretrained: bool = False) -> None:
         super().__init__()
+        input_channel = 32
+        last_channel = 1280
 
-        # Load MobileNetV2 backbone
-        weights = tv_models.MobileNet_V2_Weights.DEFAULT if pretrained else None
-        backbone = tv_models.mobilenet_v2(weights=weights)
+        # Architecture config: (expansion_factor, output_channels, num_blocks, stride)
+        inverted_residual_setting = [
+            (1, 16, 1, 1),
+            (6, 24, 2, 2),
+            (6, 32, 3, 2),
+            (6, 64, 4, 2),
+            (6, 96, 3, 1),
+            (6, 160, 3, 2),
+            (6, 320, 1, 1),
+        ]
 
-        # Adapt first conv layer for 1-channel input (mel-spectrogram)
-        # Original: Conv2d(3, 32, ...) → New: Conv2d(1, 32, ...)
-        original_conv = backbone.features[0][0]
-        backbone.features[0][0] = nn.Conv2d(
-            1,
-            original_conv.out_channels,
-            kernel_size=original_conv.kernel_size,
-            stride=original_conv.stride,
-            padding=original_conv.padding,
-            bias=False,
+        # First layer: 1-channel mel-spectrogram input
+        features = [
+            nn.Sequential(
+                nn.Conv2d(1, input_channel, 3, 2, 1, bias=False),
+                nn.BatchNorm2d(input_channel),
+                nn.ReLU6(inplace=True),
+            )
+        ]
+
+        # Inverted residual blocks
+        for t, c, n, s in inverted_residual_setting:
+            for i in range(n):
+                stride = s if i == 0 else 1
+                features.append(InvertedResidual(input_channel, c, stride, expand_ratio=t))
+                input_channel = c
+
+        # Last conv
+        features.append(
+            nn.Sequential(
+                nn.Conv2d(input_channel, last_channel, 1, 1, 0, bias=False),
+                nn.BatchNorm2d(last_channel),
+                nn.ReLU6(inplace=True),
+            )
         )
 
-        if pretrained:
-            # Average the 3-channel weights into 1-channel
-            with torch.no_grad():
-                backbone.features[0][0].weight.data = (
-                    original_conv.weight.data.mean(dim=1, keepdim=True)
-                )
-
-        self.features = backbone.features
+        self.features = nn.Sequential(*features)
         self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
         self.classifier = nn.Sequential(
             nn.Dropout(0.2),
-            nn.Linear(backbone.last_channel, num_classes),
+            nn.Linear(last_channel, num_classes),
         )
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
         x = self.features(x)
         x = self.avgpool(x)
         x = torch.flatten(x, 1)
-        x = self.classifier(x)
-        return x
+        return self.classifier(x)
 
 
 class CNNBaselineClassifier(nn.Module):

@@ -1,0 +1,2 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+tpr,,%,NOT_RUN,,,"GPS dataset not found at datasets\gps_traces. Collect GPS traces with ground-truth labels (normal/anomalous). Format: CSV with columns: lat, lon, timestamp, label (0=normal, 1=anomaly)"

@@ -15,7 +15,7 @@ from typing import AsyncGenerator
 
 import pytest
 import pytest_asyncio
-from httpx import AsyncClient
+from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine, async_sessionmaker
 from sqlalchemy.pool import StaticPool
 
@@ -88,7 +88,7 @@ async def client(test_engine) -> AsyncGenerator[AsyncClient, None]:
                 raise
 
     app.dependency_overrides[get_db] = override_get_db
-    async with AsyncClient(app=app, base_url="http://test") as ac:
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
         yield ac
     app.dependency_overrides.clear()
 
@@ -98,6 +98,11 @@ async def client(test_engine) -> AsyncGenerator[AsyncClient, None]:
 # ---------------------------------------------------------------------------
 @pytest_asyncio.fixture
 async def test_user(async_db: AsyncSession) -> User:
+    from sqlalchemy import select
+    res = await async_db.execute(select(User).where(User.email == "tourist@test.com"))
+    existing = res.scalar_one_or_none()
+    if existing:
+        return existing
     user = User(
         id=uuid.uuid4(),
         email="tourist@test.com",
@@ -115,6 +120,11 @@ async def test_user(async_db: AsyncSession) -> User:
 
 @pytest_asyncio.fixture
 async def test_admin(async_db: AsyncSession) -> User:
+    from sqlalchemy import select
+    res = await async_db.execute(select(User).where(User.email == "admin@test.com"))
+    existing = res.scalar_one_or_none()
+    if existing:
+        return existing
     admin = User(
         id=uuid.uuid4(),
         email="admin@test.com",

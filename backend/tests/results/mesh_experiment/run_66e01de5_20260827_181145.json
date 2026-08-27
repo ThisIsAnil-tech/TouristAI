@@ -1,0 +1,94 @@
+{
+  "experiment_name": "mesh_experiment",
+  "run_id": "66e01de5",
+  "status": "COMPLETED",
+  "started_at": null,
+  "completed_at": null,
+  "git_commit": "7a2f8c88d299bcae64e6f819ced35b4401e71e07",
+  "python_version": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "package_versions": {
+    "fastapi": "0.141.1",
+    "sqlalchemy": "2.0.52",
+    "pydantic": "2.13.4",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.0",
+    "torch": "2.13.0",
+    "librosa": "0.11.0",
+    "web3": "7.16.0"
+  },
+  "environment_info": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "cpu_count": 12
+  },
+  "config": {},
+  "dataset_name": null,
+  "dataset_path": null,
+  "error_message": null,
+  "notes": "Simulated mesh topology \u2014 real mesh requires deployed hardware nodes",
+  "metrics": [
+    {
+      "name": "routing_success_rate",
+      "value": 100.0,
+      "unit": "%",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "n=20, gateways=3, trials=50"
+    },
+    {
+      "name": "mean_routing_latency_ms",
+      "value": 0.26569600449874997,
+      "unit": "ms",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "mean_hop_count",
+      "value": 3.56,
+      "unit": "hops",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "max_hop_count",
+      "value": 7.0,
+      "unit": "hops",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "latency_n10_ms",
+      "value": 0.1365399977657944,
+      "unit": "ms",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "Average over 10 trials, mesh size=10"
+    },
+    {
+      "name": "latency_n50_ms",
+      "value": 0.5066200043074787,
+      "unit": "ms",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "Average over 10 trials, mesh size=50"
+    },
+    {
+      "name": "latency_n100_ms",
+      "value": 1.0906399867963046,
+      "unit": "ms",
+      "category": "SIMULATED",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "Average over 10 trials, mesh size=100"
+    }
+  ]
+}

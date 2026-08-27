@@ -1,0 +1,94 @@
+{
+  "experiment_name": "audio_experiment",
+  "run_id": "c6b2594e",
+  "status": "COMPLETED",
+  "started_at": null,
+  "completed_at": null,
+  "git_commit": "7a2f8c88d299bcae64e6f819ced35b4401e71e07",
+  "python_version": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "package_versions": {
+    "fastapi": "0.141.1",
+    "sqlalchemy": "2.0.52",
+    "pydantic": "2.13.4",
+    "numpy": "2.4.6",
+    "scikit-learn": "1.9.0",
+    "torch": "2.13.0",
+    "librosa": "0.11.0",
+    "web3": "7.16.0"
+  },
+  "environment_info": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "cpu_count": 12
+  },
+  "config": {},
+  "dataset_name": "distress_audio_dataset",
+  "dataset_path": "datasets/audio_distress",
+  "error_message": null,
+  "notes": "",
+  "metrics": [
+    {
+      "name": "accuracy",
+      "value": 33.33333333333333,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": "n_samples=30"
+    },
+    {
+      "name": "inference_time_mean_ms",
+      "value": 13.628636669212332,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "inference_time_std_ms",
+      "value": 1.7963128359196325,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "model_size_mb",
+      "value": 8.72761058807373,
+      "unit": "MB",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "macro_f1",
+      "value": 16.666666666666664,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "macro_precision",
+      "value": 11.11111111111111,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "macro_recall",
+      "value": 33.33333333333333,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": "MobileNetV2",
+      "baseline_name": null,
+      "notes": null
+    }
+  ]
+}

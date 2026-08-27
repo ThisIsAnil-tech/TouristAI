@@ -1,0 +1,82 @@
+experiment,status,metric,value,unit,category,model,timestamp
+audio_experiment,COMPLETED,accuracy,33.33333333333333,%,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,inference_time_mean_ms,13.628636669212332,ms,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,inference_time_std_ms,1.7963128359196325,ms,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,model_size_mb,8.72761058807373,MB,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,macro_f1,16.666666666666664,%,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,macro_precision,11.11111111111111,%,ACTUAL,MobileNetV2,
+audio_experiment,COMPLETED,macro_recall,33.33333333333333,%,ACTUAL,MobileNetV2,
+battery_experiment,NOT_RUN,mean_drain_per_hour,,%/hr,NOT_RUN,,
+blockchain_experiment,NOT_RUN,registration_latency_ms,,ms,NOT_RUN,,
+blockchain_experiment,NOT_RUN,gas_used,,gas,NOT_RUN,,
+edge_ai_experiment,COMPLETED,inference_time_mean_ms,13.676802000845782,ms,ACTUAL,MobileNetV2,
+edge_ai_experiment,COMPLETED,inference_time_p95_ms,15.230195014737546,ms,ACTUAL,MobileNetV2,
+edge_ai_experiment,COMPLETED,param_count,2227139.0,params,ACTUAL,MobileNetV2,
+edge_ai_experiment,COMPLETED,model_size_mb,8.72761058807373,MB,ACTUAL,MobileNetV2,
+edge_ai_experiment,COMPLETED,inference_time_mean_ms,7.815548000507988,ms,ACTUAL,CNN_Baseline,
+edge_ai_experiment,COMPLETED,inference_time_p95_ms,16.337495006155216,ms,ACTUAL,CNN_Baseline,
+edge_ai_experiment,COMPLETED,param_count,388611.0,params,ACTUAL,CNN_Baseline,
+emergency_decision_experiment,COMPLETED,accuracy,100.0,%,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,tpr,100.0,%,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,fpr,0.0,%,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,precision,100.0,%,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,mean_decision_latency_ms,0.011220003943890333,ms,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,n_test_cases,10.0,cases,ACTUAL,,2026-08-26 19:21:11.178313+00:00
+emergency_decision_experiment,COMPLETED,accuracy,100.0,%,ACTUAL,,
+emergency_decision_experiment,COMPLETED,tpr,100.0,%,ACTUAL,,
+emergency_decision_experiment,COMPLETED,fpr,0.0,%,ACTUAL,,
+emergency_decision_experiment,COMPLETED,precision,100.0,%,ACTUAL,,
+emergency_decision_experiment,COMPLETED,mean_decision_latency_ms,0.008450006134808064,ms,ACTUAL,,
+emergency_decision_experiment,COMPLETED,n_test_cases,10.0,cases,ACTUAL,,
+emergency_response_experiment,NOT_RUN,acknowledgment_time_s,,s,NOT_RUN,,
+field_test_experiment,NOT_RUN,success_rate,,%,NOT_RUN,,
+gps_experiment,NOT_RUN,tpr,,%,NOT_RUN,,
+internet_alert_experiment,COMPLETED,mean_latency_ms,27.34408999676816,ms,ACTUAL,,
+internet_alert_experiment,COMPLETED,p95_latency_ms,79.68551997037127,ms,ACTUAL,,
+internet_alert_experiment,COMPLETED,success_rate,0.0,%,ACTUAL,,
+mesh_experiment,COMPLETED,routing_success_rate,100.0,%,SIMULATED,,
+mesh_experiment,COMPLETED,mean_routing_latency_ms,0.26569600449874997,ms,SIMULATED,,
+mesh_experiment,COMPLETED,mean_hop_count,3.56,hops,SIMULATED,,
+mesh_experiment,COMPLETED,max_hop_count,7.0,hops,SIMULATED,,
+mesh_experiment,COMPLETED,latency_n10_ms,0.1365399977657944,ms,SIMULATED,,
+mesh_experiment,COMPLETED,latency_n50_ms,0.5066200043074787,ms,SIMULATED,,
+mesh_experiment,COMPLETED,latency_n100_ms,1.0906399867963046,ms,SIMULATED,,
+mobile_performance_experiment,NOT_RUN,avg_fps,,fps,NOT_RUN,,
+overall_system_experiment,COMPLETED,experiments_completed,8.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,experiments_not_run,6.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,experiments_failed,0.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,actual_metrics_collected,40.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,simulated_metrics_collected,7.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,not_run_metrics,7.0,count,ACTUAL,,
+overall_system_experiment,COMPLETED,experiment_completion_rate,57.14285714285714,%,ACTUAL,,
+risk_experiment,COMPLETED,mae,0.6349999999999999,score_units,ACTUAL,,2026-08-26 19:21:09.631398+00:00
+risk_experiment,COMPLETED,rmse,0.6692408634664602,score_units,ACTUAL,,2026-08-26 19:21:09.631398+00:00
+risk_experiment,COMPLETED,range_accuracy,100.0,%,ACTUAL,,2026-08-26 19:21:09.631398+00:00
+risk_experiment,COMPLETED,n_test_cases,6.0,cases,ACTUAL,,2026-08-26 19:21:09.631398+00:00
+risk_experiment,COMPLETED,threshold_monotone,1.0,bool,ACTUAL,,2026-08-26 19:21:09.631398+00:00
+risk_experiment,COMPLETED,mae,0.6349999999999999,score_units,ACTUAL,,
+risk_experiment,COMPLETED,rmse,0.6692408634664602,score_units,ACTUAL,,
+risk_experiment,COMPLETED,range_accuracy,100.0,%,ACTUAL,,
+risk_experiment,COMPLETED,n_test_cases,6.0,cases,ACTUAL,,
+risk_experiment,COMPLETED,threshold_monotone,1.0,bool,ACTUAL,,
+scalability_experiment,COMPLETED,haversine_throughput,881118.5978707763,ops/sec,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,haversine_mean_us,1.1349209997570142,μs,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,threshold_calc_throughput,359581.8494563233,ops/sec,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,concurrent_10_ms,56.89250002615154,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,concurrent_50_ms,1.3764000032097101,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,concurrent_100_ms,1.5180999762378633,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,concurrent_500_ms,8.43040004838258,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,astar_mean_ms,0.859941997914575,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,astar_p99_ms,1.6610730061074725,ms,ACTUAL,,2026-08-26 19:21:13.364145+00:00
+scalability_experiment,COMPLETED,haversine_throughput,1217510.7266612265,ops/sec,ACTUAL,,
+scalability_experiment,COMPLETED,haversine_mean_us,0.8213479997357354,μs,ACTUAL,,
+scalability_experiment,COMPLETED,threshold_calc_throughput,523055.22835888015,ops/sec,ACTUAL,,
+scalability_experiment,COMPLETED,concurrent_10_ms,0.2623000182211399,ms,ACTUAL,,
+scalability_experiment,COMPLETED,concurrent_50_ms,0.7029999978840351,ms,ACTUAL,,
+scalability_experiment,COMPLETED,concurrent_100_ms,0.9805000154301524,ms,ACTUAL,,
+scalability_experiment,COMPLETED,concurrent_500_ms,4.753699991852045,ms,ACTUAL,,
+scalability_experiment,COMPLETED,astar_mean_ms,0.6096409977180883,ms,ACTUAL,,
+scalability_experiment,COMPLETED,astar_p99_ms,1.271130992681721,ms,ACTUAL,,
+sms_alert_experiment,COMPLETED,mean_latency_ms,1.223049993859604,ms,ACTUAL,,
+sms_alert_experiment,COMPLETED,p95_latency_ms,1.4479300123639405,ms,ACTUAL,,
+sms_alert_experiment,COMPLETED,success_rate,0.0,%,ACTUAL,,

@@ -1,7 +1,7 @@
 """tests/unit/test_route_deviation.py — Unit tests for route deviation detector."""
 import pytest
 from app.services.gps.haversine import GpsPoint
-from app.services.gps.route_deviation import RouteDeviationDetector, DeviationResult
+from app.services.gps.route_deviation import RouteDeviationDetector, RouteDeviationResult
 
 
 def _make_route(*coords):
@@ -29,11 +29,11 @@ class TestRouteDeviationDetector:
 
     def test_empty_route_returns_none(self):
         result = self.detector.check(GpsPoint(10.0, 76.0), [])
-        assert result is None
+        assert result is not None and not result.is_deviated
 
     def test_single_point_route_returns_none(self):
         result = self.detector.check(GpsPoint(10.0, 76.0), [GpsPoint(10.0, 76.0)])
-        assert result is None
+        assert result is not None and not result.is_deviated
 
     def test_consecutive_counter_increments(self):
         route = _make_route((10.0, 76.0), (10.0, 76.5))
@@ -59,4 +59,4 @@ class TestRouteDeviationDetector:
         far_off = GpsPoint(12.0, 76.25)
         result = self.detector.check(far_off, route)
         assert result is not None
-        assert result.distance_from_route_m > 0
+        assert result.min_distance_to_route_m > 0

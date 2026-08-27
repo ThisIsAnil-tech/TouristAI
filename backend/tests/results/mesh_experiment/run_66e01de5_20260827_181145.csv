@@ -1,0 +1,8 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+routing_success_rate,100.0,%,SIMULATED,,,"n=20, gateways=3, trials=50"
+mean_routing_latency_ms,0.26569600449874997,ms,SIMULATED,,,
+mean_hop_count,3.56,hops,SIMULATED,,,
+max_hop_count,7.0,hops,SIMULATED,,,
+latency_n10_ms,0.1365399977657944,ms,SIMULATED,,,"Average over 10 trials, mesh size=10"
+latency_n50_ms,0.5066200043074787,ms,SIMULATED,,,"Average over 10 trials, mesh size=50"
+latency_n100_ms,1.0906399867963046,ms,SIMULATED,,,"Average over 10 trials, mesh size=100"

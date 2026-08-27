@@ -1,0 +1,8 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+experiments_completed,8.0,count,ACTUAL,,,Out of 14 total experiments
+experiments_not_run,6.0,count,ACTUAL,,,Require real data/hardware
+experiments_failed,0.0,count,ACTUAL,,,
+actual_metrics_collected,40.0,count,ACTUAL,,,
+simulated_metrics_collected,7.0,count,ACTUAL,,,
+not_run_metrics,7.0,count,ACTUAL,,,
+experiment_completion_rate,57.14285714285714,%,ACTUAL,,,

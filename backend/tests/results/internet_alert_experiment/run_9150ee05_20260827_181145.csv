@@ -1,0 +1,4 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+mean_latency_ms,27.34408999676816,ms,ACTUAL,,,
+p95_latency_ms,79.68551997037127,ms,ACTUAL,,,
+success_rate,0.0,%,ACTUAL,,,

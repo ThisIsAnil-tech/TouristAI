@@ -38,8 +38,8 @@ class TestAuthRegister:
 class TestAuthLogin:
     @pytest.mark.asyncio
     async def test_login_success(self, client: AsyncClient, test_user):
-        response = await client.post("/api/v1/auth/login", data={
-            "username": "tourist@test.com",
+        response = await client.post("/api/v1/auth/login", json={
+            "email": "tourist@test.com",
             "password": "testpass123",
         })
         assert response.status_code == 200
@@ -49,16 +49,16 @@ class TestAuthLogin:
 
     @pytest.mark.asyncio
     async def test_login_wrong_password(self, client: AsyncClient, test_user):
-        response = await client.post("/api/v1/auth/login", data={
-            "username": "tourist@test.com",
+        response = await client.post("/api/v1/auth/login", json={
+            "email": "tourist@test.com",
             "password": "wrongpass",
         })
         assert response.status_code == 401
 
     @pytest.mark.asyncio
     async def test_login_unknown_user(self, client: AsyncClient):
-        response = await client.post("/api/v1/auth/login", data={
-            "username": "nobody@test.com", "password": "anypass"
+        response = await client.post("/api/v1/auth/login", json={
+            "email": "nobody@test.com", "password": "anypass"
         })
         assert response.status_code == 401
 

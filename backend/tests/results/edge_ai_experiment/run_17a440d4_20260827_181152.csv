@@ -1,0 +1,8 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+inference_time_mean_ms,13.676802000845782,ms,ACTUAL,MobileNetV2,,"CPU benchmark, n=100"
+inference_time_p95_ms,15.230195014737546,ms,ACTUAL,MobileNetV2,,
+param_count,2227139.0,params,ACTUAL,MobileNetV2,,
+model_size_mb,8.72761058807373,MB,ACTUAL,MobileNetV2,,
+inference_time_mean_ms,7.815548000507988,ms,ACTUAL,CNN_Baseline,,"CPU benchmark, n=100"
+inference_time_p95_ms,16.337495006155216,ms,ACTUAL,CNN_Baseline,,
+param_count,388611.0,params,ACTUAL,CNN_Baseline,,
