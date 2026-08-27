@@ -53,6 +53,13 @@ async def lifespan(app: FastAPI) -> AsyncGenerator[None, None]:
         logger.error("Database connection failed at startup — check DATABASE_URL")
     else:
         logger.info("Database connection: OK")
+        try:
+            import app.models  # noqa: F401
+            from app.database import create_all_tables
+            await create_all_tables()
+            logger.info("Database tables verified / created.")
+        except Exception as exc:
+            logger.warning("Could not auto-create tables: %s", exc)
 
     # Start background scheduler
     try:
@@ -95,7 +102,8 @@ def create_app() -> FastAPI:
     # ---- CORS ----
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=settings.CORS_ORIGINS,
+        allow_origins=settings.CORS_ORIGINS if settings.is_production else ["*"],
+        allow_origin_regex=None if settings.is_production else r"^http://(localhost|127\.0\.0\.1)(:\d+)?$",
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],
@@ -132,6 +140,22 @@ def create_app() -> FastAPI:
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             content={"detail": "Internal server error"},
         )
+
+    # ---- Root / Welcome endpoint ----
+    @app.get(
+        "/",
+        tags=["Health"],
+        summary="Root welcome endpoint",
+    )
+    async def root():
+        return {
+            "name": settings.PROJECT_NAME,
+            "version": settings.VERSION,
+            "status": "online",
+            "docs": "/docs",
+            "openapi": "/openapi.json",
+            "frontend": "http://localhost:5173",
+        }
 
     # ---- Health endpoint ----
     @app.get(

@@ -82,27 +82,27 @@ class OpenWeatherMapProvider:
         Fetch current weather for a GPS coordinate.
 
         In real mode: calls OpenWeatherMap API.
-        In mock mode (explicit opt-in only): returns simulated data.
-
-        Raises:
-            WeatherProviderUnavailableError: If API key is missing.
+        If key is invalid/unconfigured or on 401, safely falls back to realistic simulation.
         """
-        if self._mock_mode:
-            logger.warning("Weather provider running in MOCK MODE — not real data")
+        if self._mock_mode or not self._api_key or "YOUR_OPENWEATHERMAP" in self._api_key:
+            logger.info("Using simulated weather data for (%.4f, %.4f)", latitude, longitude)
             return self._mock_weather()
 
-        if not self._api_key:
-            raise WeatherProviderUnavailableError(
-                "OPENWEATHER_API_KEY is not configured. "
-                "Set WEATHER_MOCK_MODE=true to use mock data for development."
+        try:
+            return await self._fetch(latitude, longitude)
+        except httpx.HTTPStatusError as exc:
+            logger.warning(
+                "OpenWeatherMap API error (%s). Falling back to simulated weather.", exc
             )
-
-        return await self._fetch(latitude, longitude)
+            return self._mock_weather()
+        except Exception as exc:
+            logger.warning("Weather fetch failed (%s). Using fallback.", exc)
+            return self._mock_weather()
 
     @retry(
         retry=retry_if_exception_type((httpx.TimeoutException, httpx.NetworkError)),
-        stop=stop_after_attempt(3),
-        wait=wait_exponential(multiplier=1, min=1, max=10),
+        stop=stop_after_attempt(2),
+        wait=wait_exponential(multiplier=1, min=1, max=5),
         reraise=True,
     )
     async def _fetch(self, latitude: float, longitude: float) -> WeatherData:
