@@ -1,0 +1,2 @@
+metric_name,value,unit,category,model_name,baseline_name,notes
+haversine_throughput,881118.5978707763,ops/sec,ACTUAL,,,n=100000 sequential calls

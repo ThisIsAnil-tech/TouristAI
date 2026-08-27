@@ -1,0 +1,75 @@
+/* Cream/Beige iOS-Inspired Minimal Research Palette */
+:root {
+  --bg-main: #F7F1E7;
+  --bg-card: #FFFDF8;
+  --bg-secondary: #EFE6D7;
+  --bg-tertiary: #E5DAC9;
+  --bg-input: #FFFFFF;
+  
+  --border-subtle: #E8DECE;
+  --border-main: #DDD2C1;
+  --border-strong: #BCADA0;
+  
+  --text-primary: #29251F;
+  --text-secondary: #746C60;
+  --text-muted: #9E9484;
+  --text-inverse: #FFFDF8;
+  
+  --accent-primary: #3B332A;
+  --accent-hover: #26201A;
+  --accent-subtle: #EFE8DC;
+  
+  /* Subtle Tonal State Indicators (no loud neon) */
+  --badge-neutral-bg: #EFE6D7;
+  --badge-neutral-text: #4A4237;
+  
+  --badge-success-bg: #E2ECE0;
+  --badge-success-text: #2A4725;
+  --badge-success-border: #C8DDC5;
+  
+  --badge-warning-bg: #F4EBD7;
+  --badge-warning-text: #5E461A;
+  --badge-warning-border: #E5D5B5;
+  
+  --badge-danger-bg: #F5E3E1;
+  --badge-danger-text: #632220;
+  --badge-danger-border: #E8C4C1;
+  
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 9999px;
+  
+  --shadow-sm: 0 1px 2px rgba(41, 37, 31, 0.04);
+  --shadow-md: 0 4px 12px rgba(41, 37, 31, 0.06);
+  --shadow-lg: 0 10px 24px rgba(41, 37, 31, 0.08);
+  
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: inherit;
+}

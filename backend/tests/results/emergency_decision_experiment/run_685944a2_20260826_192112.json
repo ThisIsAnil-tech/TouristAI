@@ -1,0 +1,85 @@
+{
+  "experiment_name": "emergency_decision_experiment",
+  "run_id": "685944a2",
+  "status": "COMPLETED",
+  "started_at": "2026-08-26 19:21:11.178313+00:00",
+  "completed_at": "2026-08-26 19:21:12.792127+00:00",
+  "git_commit": null,
+  "python_version": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "package_versions": {
+    "fastapi": "0.141.1",
+    "sqlalchemy": "2.0.44",
+    "pydantic": "2.13.4",
+    "numpy": "1.26.4",
+    "scikit-learn": "1.4.2",
+    "torch": "2.0.1",
+    "librosa": "not_installed",
+    "web3": "not_installed"
+  },
+  "environment_info": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "cpu_count": 12
+  },
+  "config": {},
+  "dataset_name": null,
+  "dataset_path": null,
+  "error_message": null,
+  "notes": "TP=6 FP=0 TN=4 FN=0",
+  "metrics": [
+    {
+      "name": "accuracy",
+      "value": 100.0,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "tpr",
+      "value": 100.0,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "fpr",
+      "value": 0.0,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "precision",
+      "value": 100.0,
+      "unit": "%",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "mean_decision_latency_ms",
+      "value": 0.011220003943890333,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "n_test_cases",
+      "value": 10.0,
+      "unit": "cases",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+version: "3.9"
+
+services:
+  # ── PostgreSQL ──────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: tourist_safety_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-tourist_safety}
+      POSTGRES_USER: ${POSTGRES_USER:-tourist_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-changeme}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-tourist_user}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Local Blockchain (Hardhat node via npx) ─────────────────────────────
+  blockchain:
+    image: node:20-alpine
+    container_name: tourist_safety_blockchain
+    restart: unless-stopped
+    working_dir: /app
+    command: npx hardhat node --hostname 0.0.0.0
+    ports:
+      - "8545:8545"
+    volumes:
+      - ./contracts:/app/contracts
+      - ./hardhat.config.js:/app/hardhat.config.js
+      - blockchain_node_modules:/app/node_modules
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8545 || exit 0"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+
+  # ── Backend (FastAPI) ───────────────────────────────────────────────────
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: tourist_safety_backend
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql+asyncpg://${POSTGRES_USER:-tourist_user}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-tourist_safety}
+      DATABASE_URL_SYNC: postgresql+psycopg2://${POSTGRES_USER:-tourist_user}:${POSTGRES_PASSWORD:-changeme}@postgres:5432/${POSTGRES_DB:-tourist_safety}
+      BLOCKCHAIN_PROVIDER_URL: http://blockchain:8545
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./models:/app/models:ro
+      - ./experiments:/app/experiments
+      - ./tests/results:/app/tests/results
+    command: >
+      sh -c "
+        alembic upgrade head &&
+        uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 2
+      "
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8000/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+volumes:
+  postgres_data:
+  blockchain_node_modules:

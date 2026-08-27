@@ -1,0 +1,112 @@
+{
+  "experiment_name": "scalability_experiment",
+  "run_id": "072eb4c6",
+  "status": "COMPLETED",
+  "started_at": "2026-08-26 19:21:13.364145+00:00",
+  "completed_at": "2026-08-26 19:21:14.404871+00:00",
+  "git_commit": null,
+  "python_version": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+  "package_versions": {
+    "fastapi": "0.141.1",
+    "sqlalchemy": "2.0.44",
+    "pydantic": "2.13.4",
+    "numpy": "1.26.4",
+    "scikit-learn": "1.4.2",
+    "torch": "2.0.1",
+    "librosa": "not_installed",
+    "web3": "not_installed"
+  },
+  "environment_info": {
+    "platform": "Windows-10-10.0.26200-SP0",
+    "python": "3.11.1 (tags/v3.11.1:a7a450f, Dec  6 2022, 19:58:39) [MSC v.1934 64 bit (AMD64)]",
+    "cpu_count": 12
+  },
+  "config": {},
+  "dataset_name": null,
+  "dataset_path": null,
+  "error_message": null,
+  "notes": "Pure compute scalability tests \u2014 no DB required",
+  "metrics": [
+    {
+      "name": "haversine_throughput",
+      "value": 881118.5978707763,
+      "unit": "ops/sec",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "n=100000 sequential calls"
+    },
+    {
+      "name": "haversine_mean_us",
+      "value": 1.1349209997570142,
+      "unit": "\u03bcs",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    },
+    {
+      "name": "threshold_calc_throughput",
+      "value": 359581.8494563233,
+      "unit": "ops/sec",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "n=100000"
+    },
+    {
+      "name": "concurrent_10_ms",
+      "value": 56.89250002615154,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "10 concurrent GPS submissions (simulated async)"
+    },
+    {
+      "name": "concurrent_50_ms",
+      "value": 1.3764000032097101,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "50 concurrent GPS submissions (simulated async)"
+    },
+    {
+      "name": "concurrent_100_ms",
+      "value": 1.5180999762378633,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "100 concurrent GPS submissions (simulated async)"
+    },
+    {
+      "name": "concurrent_500_ms",
+      "value": 8.43040004838258,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "500 concurrent GPS submissions (simulated async)"
+    },
+    {
+      "name": "astar_mean_ms",
+      "value": 0.859941997914575,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": "n=100 trials, 50-node mesh"
+    },
+    {
+      "name": "astar_p99_ms",
+      "value": 1.6610730061074725,
+      "unit": "ms",
+      "category": "ACTUAL",
+      "model_name": null,
+      "baseline_name": null,
+      "notes": null
+    }
+  ]
+}
