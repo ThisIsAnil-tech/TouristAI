@@ -436,7 +436,7 @@ crash.*.log
 
 
 /prompts_reports
-/FlutterApp
+#/FlutterApp
 /frontend/package-lock.json
 /backend/.venv
 RUN.md
