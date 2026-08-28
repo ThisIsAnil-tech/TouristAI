@@ -441,3 +441,4 @@ crash.*.log
 /backend/.venv
 RUN.md
 DONE.md
+/prototype
